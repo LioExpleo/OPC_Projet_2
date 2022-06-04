@@ -35,7 +35,7 @@ précédents fichiers sont effacés et remplacés par les nouveaux.
 La liste de liste de champs par catégorie sera utilisée pour écrire le fichier Csv qui portera le nom de la catégorie.csv
 Ce fichier Csv sera rangé dans un répertoire Csv créé par le scrapping. Si un fichier du même nom est existant dans le 
 répertoire, issu d'un précédent scrapping par exemple, ce précédent fichier sont effacés et remplacé par le nouveau.
-
+***
 Installation et lancement du programme :
 
 1 - travail effectué sous WSL2 : WSL2 est donc nécessaire pour ces lignes de commandes.
