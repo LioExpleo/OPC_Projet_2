@@ -2,12 +2,8 @@ import os
 
 import requests
 from bs4 import BeautifulSoup
-import re #import de regular expression
-import re
 from FctProjet2 import*
-import csv
 import urllib.request
-import time
 
 def ScrapLivre(url):
     ListUrlImgError = []
@@ -18,7 +14,6 @@ def ScrapLivre(url):
         soup = BeautifulSoup(response.content, 'html.parser') #html.parser
                             # content signifie récupération brute de la page téléchargée
                             # Beautifulsoup saura quel code html est utilisé tout seul en ayant téléchargé de façon brute
-                            # si response.content, on laisse beautifulsoup deviner l'encodage
 
         ListeChampsLivre.append (url)
 
@@ -26,9 +21,8 @@ def ScrapLivre(url):
         # for i in range(7): #test de l'index correspondant
         i = 0
         Upc = soup.find_all('td')[i].get_text()
-        UpcNew = Upc.replace('Price (incl. tax)', "")
-        #UpcNew = UpcNew.replace('Â£', "")
-        #print("Universal Product code : " + UpcNew + "\n")
+        #UpcNew = Upc.replace('Price (incl. tax)', "")
+        UpcNew = Upc
         ListeChampsLivre.append (UpcNew)
 
         #RECUPERATION DU TITRE ok
@@ -112,8 +106,6 @@ def ScrapLivre(url):
         #3 rechercher la position du caractere (") qui est à la suite du nombre dans la nouvelle trame
         #4 récupération des caractere de la nouvelle trame jusqu a la position du caractere qui suit le nombre
 
-        #pattern = 'star-rating'
-        #for match in re.finditer(pattern,chaine) :
         #IMAGE_URL
         #for i in range(1):
         Category = soup.findAll("div", {"class": "item active"})
@@ -247,7 +239,7 @@ def ScrapUrlLivre(url):
             DebutStr, FinStr = CherchPosit(AllBooksInCategories, charStart, charEnd)
             #print ("test recherche scrap " + (AllBooksInCategories[DebutStr: FinStr]))
 
-            #FinListe devient vrai quand on a "-1" en reponse de nouvelle recherche de chaine dans chaine
+            #FinListe devient vrai quand on a "-1" en réponse de nouvelle recherche de chaine dans chaine
             if (DebutStr==-1):
                 FinListe = True
                 #print ("DebutStr ====== -1")

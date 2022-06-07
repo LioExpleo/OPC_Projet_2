@@ -17,9 +17,6 @@ ListeNameCategorie = []
 ListNameErrImg = []
 ListUrlErrImg = []
 
-
-
-
 #Ecriture de l'entete des fichiers csv dans ListeEnTeteCol
 ListeEnTeteCol = []
 ListeEnTeteCol.append('product_page_url')
@@ -130,27 +127,20 @@ for i in range(LenListeUrlCategories): #Pour toutes les catégories
     # Pour tous les url des livres de toutes les pages d'une catégorie, scraper tous les champs des livres
     # et les mettre dans une liste de liste ListeChampsLivre
     # cette liste contient tous les champs de tous les livres d'une catégorie
-    LenListBookInCategories002 = ListBookInCategories002.__len__()  # récupération de la longueur de la liste de liste page de livres dans la categorie
+    LenListBookInCategories002 = ListBookInCategories002.__len__()  # récupération de la longueur de la liste de liste de livres dans la catégorie
     for i_PageBook in range(LenListBookInCategories002):  # Pour tous les livres jusqu'à la fin ajouter le livre dans la liste totale
-
+        #
         ListeChampsLivreTemp, ListeNameImgError, ListUrlImgError = (ScrapLivre(ListBookInCategories002[i_PageBook]))
         ListeChampsLivre.append(ListeChampsLivreTemp)
-        ###################
+
         #print(ListeNameImgError)
         LenListeNameImgError = ListeNameImgError.__len__()
         if (LenListeNameImgError >0):
             print(LenListeNameImgError)
             time.sleep(60)
             ErrTelechImgUrl(LenListeNameImgError, ListeNameImgError, ListUrlImgError)
-        ###################
-        #ListeChampsLivre.append(ScrapLivre(ListBookInCategories002[i_PageBook]))
-    #print ("liste champs livre de la catégorie print premier et dernier ---28052H44----------")
-    #print (ListeChampsLivre[0]) #print des champs du 1er livre de la catégorie
-    #print(ListeChampsLivre[-1:]) #print des champs du dernier livre de la catégorie
 
     LenListeChampsLivre = ListeChampsLivre.__len__()  # récupération de la longueur de la liste de liste
-    #print ("longeur liste champs livre _____________________________"  )
-    #print (LenListeChampsLivre)
 
     ListeCsv = []
     ListeCsv.clear()
